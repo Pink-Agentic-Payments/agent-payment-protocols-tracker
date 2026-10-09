@@ -1,0 +1,32 @@
+name: Correct a number
+description: Report an incorrect or outdated value in tracker.csv
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: input
+    id: protocol
+    attributes:
+      label: Protocol
+      description: The exact value in the `protocol` column of tracker.csv (x402, AP2, ACP, or L402)
+    validations:
+      required: true
+  - type: input
+    id: metric
+    attributes:
+      label: Metric
+      description: The exact value in the `metric` column of tracker.csv
+    validations:
+      required: true
+  - type: input
+    id: correct-value
+    attributes:
+      label: Correct value
+    validations:
+      required: true
+  - type: input
+    id: evidence-url
+    attributes:
+      label: Public evidence URL
+      description: A public URL (docs, repo, registry, changelog) that supports the correct value
+    validations:
+      required: true

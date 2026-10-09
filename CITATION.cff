@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Agent Payment Protocols Adoption Tracker (October 2026)"
+authors:
+  - name: "PinkWallet"
+date-released: 2026-10-09
+version: "2026.10"
+license: CC-BY-4.0
+repository-code: "https://github.com/Pink-Agentic-Payments/agent-payment-protocols-tracker"
