@@ -2,35 +2,35 @@
 
 > **Disclosure**: Published by PinkWallet, which builds Pink Agentic AI Payments (an agent spending-control layer). Pink is not one of the protocols measured and does not integrate with any of them today.
 
-A monthly snapshot of public adoption signals for x402, AP2 (Agent Payments Protocol) and ACP (Agentic Commerce Protocol), plus L402 as a longer-running comparison point. Measured 2026-10-08/09. Full method in [METHODOLOGY.md](./METHODOLOGY.md), full findings in [FINDINGS.md](./FINDINGS.md), raw data in [tracker.csv](./tracker.csv).
+A monthly snapshot of public adoption signals for x402, AP2 (Agent Payments Protocol) and ACP (Agentic Commerce Protocol), plus L402 as a longer-running comparison point. Measured 2026-10-08/09, refreshed 2026-10-13. Full method in [METHODOLOGY.md](./METHODOLOGY.md), full findings in [FINDINGS.md](./FINDINGS.md), raw data in [tracker.csv](./tracker.csv) (current snapshot) and [data/](./data/) (dated historical snapshots).
 
-## Summary
+## Latest results (2026-10-13)
 
 Generated directly from `tracker.csv` by [make_table.py](./make_table.py), run `python3 make_table.py` to reproduce.
 
 | Protocol | GitHub stars | Contributors | Commits (90d) | Official npm downloads/week [^npm] | Official PyPI downloads/month [^pypi] | MCP Registry servers [^mcp] | Facilitators/partners listed [^fac] |
 |---|---|---|---|---|---|---|---|
-| x402 | 6,689 | 333 | 281 | 485,082 | 204,765 | 214 | 15 |
-| AP2 | 3,211 | 19 | 0 | n/a | n/a | 3 | n/a |
-| ACP | 1,568 | 26 | 1 | n/a | n/a | 2 | n/a |
+| x402 | 6,715 | 334 | 278 | 494,987 | 204,765 | 222 | 15 |
+| AP2 | 3,226 | 19 | 0 | n/a | n/a | 3 | n/a |
+| ACP | 1,571 | 26 | 1 | n/a | n/a | 3 | n/a |
 | L402 | 91 | 8 | 0 | n/a | n/a | 5 | 3 |
 
 [^npm]: Sum of official npm packages. x402: `x402`, `x402-fetch`, `x402-axios`, `x402-express`, `x402-next` (all maintained in the x402 monorepo). AP2 and ACP have no official npm package we could confirm; L402's possible SDK package could not be identified with confidence. "n/a" means not measurable, not zero.
 [^pypi]: x402's official PyPI package is `x402`. AP2's and ACP's spec repos reference no official PyPI package. A PyPI package named `ap2` exists but belongs to an unrelated third-party repo, not Google's, and is excluded.
-[^mcp]: Distinct server names in the official MCP Registry naming each protocol. ACP's figure is the manually verified count (2 of 8 raw matches; the other 6 are unrelated tools that also abbreviate to "ACP"). See FINDINGS.md finding 4.
-[^fac]: x402's figure is its official facilitators directory (docs.x402.org). L402's figure is its README's hand-maintained "Implementations" list. AP2 and ACP publish no equivalent ecosystem/partners page as of 2026-10-08.
+[^mcp]: Distinct server names in the official MCP Registry naming each protocol. ACP's figure is the manually verified count (3 of 10 raw matches as of 2026-10-13; the other 7 are unrelated tools that also abbreviate to "ACP"). See FINDINGS.md finding 4.
+[^fac]: x402's figure is its official facilitators directory (docs.x402.org). L402's figure is its README's hand-maintained "Implementations" list. AP2 and ACP publish no equivalent ecosystem/partners page as of 2026-10-13.
 
 ## Findings
 
-1. x402 has by far the largest GitHub footprint of the three commerce-focused protocols: 6,689 stars and 333 contributors, vs. 3,211 stars / 19 contributors for AP2 and 1,568 stars / 26 contributors for ACP.
-2. x402's spec repo is far more active day-to-day: 281 commits in the last 90 days, vs. 1 for ACP and 0 for AP2 (AP2's and L402's default branches had no commits in the 90 days before measurement).
-3. x402 has a real, measured package-download footprint; AP2 and ACP do not, as far as we could find. The official npm package `x402` gets 458,455 downloads/week and the official PyPI package `x402` gets 204,765 downloads/month. Neither AP2 nor ACP has a confirmable official npm or PyPI package.
-4. x402 also dominates the MCP ecosystem: 214 distinct registered MCP servers name it, vs. 3 for AP2 and 2 (verified, after removing false positives) for ACP. The raw unverified count for "ACP" was 8, but 6 of those are unrelated tools that happen to also abbreviate to "ACP".
-5. x402's GitHub code-footprint search also leads, with 28,297 repos matching `x402 in:name,description,readme`, vs. 2,587 for `AP2 ... agent` and 977 for `"agentic commerce protocol"`. These are GitHub's own approximate search counts, not exact; see caveats below.
+1. x402 has by far the largest GitHub footprint of the three commerce-focused protocols: 6,715 stars and 334 contributors, vs. 3,226 stars / 19 contributors for AP2 and 1,571 stars / 26 contributors for ACP.
+2. x402's spec repo is far more active day-to-day: 278 commits in the last 90 days, vs. 1 for ACP and 0 for AP2 (AP2's and L402's default branches had no commits in the 90 days before measurement).
+3. x402 has a real, measured package-download footprint; AP2 and ACP do not, as far as we could find. The sum of its five official npm packages (`x402`, `x402-fetch`, `x402-axios`, `x402-express`, `x402-next`) is 494,987 downloads/week and the official PyPI package `x402` gets 204,765 downloads/month. Neither AP2 nor ACP has a confirmable official npm or PyPI package.
+4. x402 also dominates the MCP ecosystem: 222 distinct registered MCP servers name it, vs. 3 for AP2 and 3 (verified, after removing false positives) for ACP. The raw unverified count for "ACP" was 10, but 7 of those are unrelated tools that happen to also abbreviate to "ACP".
+5. x402's GitHub code-footprint search also leads, with 29,195 repos matching `x402 in:name,description,readme`, vs. 2,640 for `AP2 ... agent` and 989 for `"agentic commerce protocol"`. These are GitHub's own approximate search counts, not exact; see caveats below.
 6. AP2 has shipped one versioned release since launch (v0.2.0, 2026-04-28); ACP ships on a rolling, date-stamped API version (latest promoted: 2026-04-17) instead of GitHub releases; x402 tags per-package version bumps instead of using GitHub Releases.
-7. x402 is the only one of the three with a maintained, named facilitator/implementer directory: its official docs list 15 production facilitators (Coinbase CDP, Fireblocks, Polygon, Celo, Corbits, etc.). Neither AP2 nor ACP publishes an equivalent ecosystem or partners page as of 2026-10-08.
+7. x402 is the only one of the three with a maintained, named facilitator/implementer directory: its official docs list 15 production facilitators (Coinbase CDP, Fireblocks, Polygon, Celo, Corbits, etc.). Neither AP2 nor ACP publishes an equivalent ecosystem or partners page as of 2026-10-13.
 8. L402 (the oldest of the four, dating to 2020) is now the smallest by every GitHub metric measured: 91 stars, 8 contributors, 0 commits in the last 90 days, no confirmable official npm/PyPI package, and only 5 MCP registry servers naming it.
-9. Visa's "Trusted Agent Protocol" and Mastercard's "Agent Pay" have no public spec repo or document as of 2026-10-08 and are excluded from this tracker; GitHub searches for both surface only third-party demo/hackathon repos.
+9. Visa's "Trusted Agent Protocol" and Mastercard's "Agent Pay" have no public spec repo or document as of 2026-10-13 and are excluded from this tracker; GitHub searches for both surface only third-party demo/hackathon repos.
 10. L402 itself has two competing "canonical" homes on GitHub: `lightninglabs/L402` (91 stars, the originating org) and the independent `l402-protocol/l402` (227 stars, describing itself as a newer continuation). This tracker measured only `lightninglabs/L402`; treat L402's numbers above as a lower bound on total L402-branded GitHub activity.
 
 Full findings with exact source rows are in [FINDINGS.md](./FINDINGS.md).

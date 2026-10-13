@@ -175,10 +175,16 @@ def mcp_registry_count(term):
         )
         if cursor:
             url += "&cursor=" + urllib.parse.quote(cursor)
-        try:
-            with urllib.request.urlopen(url, timeout=20) as r:
-                d = json.load(r)
-        except Exception:
+        d = None
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(url, timeout=20) as r:
+                    d = json.load(r)
+                break
+            except Exception:
+                if attempt < 2:
+                    time.sleep(3)
+        if d is None:
             break
         for s in d.get("servers", []):
             nm = s.get("server", {}).get("name")

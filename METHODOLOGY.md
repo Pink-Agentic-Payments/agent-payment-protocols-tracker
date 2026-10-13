@@ -1,6 +1,8 @@
 # Methodology: Agent Payment Protocols Adoption Tracker, Oct 2026
 
-Measured: 2026-10-08 to 2026-10-09 (UTC). All commands below were actually run; see `tracker.csv` for the exact `source_url`/`method` per row, and `collect.py` for a re-runnable version of metrics 1-4.
+Measured: 2026-10-08 to 2026-10-09 (UTC), refreshed 2026-10-13 (UTC). All commands below were actually run; see `tracker.csv` for the exact `source_url`/`method` per row (current snapshot), `data/` for dated historical snapshots, and `collect.py` for a re-runnable version of metrics 1-4.
+
+**2026-10-13 refresh note:** `collect.py`'s MCP Registry fetch (`mcp_registry_count()`) turned out to be flaky: a transient HTTP/JSON failure against `registry.modelcontextprotocol.io` silently broke the pagination loop and returned a partial or zero count instead of retrying, which showed up as AP2 and ACP intermittently returning 0 across repeated runs. Fixed by adding a 3x retry with a 3s backoff per page, matching the retry pattern already used for the GitHub API calls. Values were confirmed stable across 5 consecutive calls after the fix.
 
 ## Canonical repo selection
 
@@ -51,7 +53,7 @@ All GitHub calls used `Authorization: token $GITHUB_TOKEN` (never printed). Unau
 
 Search terms used: `x402`, `AP2`, `ACP`, `L402` (the literal protocol short names, as the task specified).
 
-**"ACP" specifically is a generic acronym collision risk.** We manually read all 8 deduplicated raw matches for "ACP" and found only 2 were genuine Stripe/OpenAI Agentic Commerce Protocol integrations; the other 6 were unrelated tools (an AI social network abbreviated "ACP", an "Agentic Control Plane" cost-monitoring tool, an MCP-to-ACP coding-agent bridge, a username substring match, an unrelated banking-data server, and the unrelated PEAC protocol). We report both the raw count (8, `ACP,mcp_registry_distinct_servers_raw`) and the manually verified count (2, `ACP,mcp_registry_distinct_servers_verified`) in `tracker.csv`. We did not do the equivalent manual pass for "AP2" and "L402" beyond spot-checking (all matches for both looked genuine) because their raw counts were low enough to read in full, and did a 10-item random spot-check (not full manual read) for x402's 214 since that volume was too large to read exhaustively in the time available.
+**"ACP" specifically is a generic acronym collision risk.** As of 2026-10-13 we manually read all 10 deduplicated raw matches for "ACP" and found 3 genuine Agentic Commerce Protocol integrations (2 explicitly Stripe/OpenAI-branded, plus a new PayPal-settled ACP checkout sandbox, `com.flo-voice1/acp-sandbox`); the other 7 were unrelated tools (an AI social network abbreviated "ACP", an "Agentic Control Plane" cost-monitoring tool, an MCP-to-ACP coding-agent bridge, an unrelated ACPI-tables tool, a username substring match, an unrelated banking-data server, and the unrelated PEAC protocol). We report both the raw count (`ACP,mcp_registry_distinct_servers_raw`) and the manually verified count (`ACP,mcp_registry_distinct_servers_verified`) in `tracker.csv`. We did not do the equivalent manual pass for "AP2" and "L402" beyond spot-checking (all matches for both looked genuine) because their raw counts were low enough to read in full, and did a 10-item random spot-check (not full manual read) for x402's 222 since that volume was too large to read exhaustively in the time available.
 
 ## Metric 5: Ecosystem/partner pages
 
